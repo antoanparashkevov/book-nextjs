@@ -30,7 +30,10 @@ const NotificationTemplate: React.FC<notificationProps> = ({
 
 	return (
 		<label htmlFor="popup" className="relative">
-			<input type="checkbox" id="popup" className='absolute opacity-0 w-0 h-0' onChange={() => setShow(false)} />
+			<input type="checkbox" id="popup" className='absolute opacity-0 w-0 h-0' onChange={(e: any) => {
+				e.preventDefault();
+				setShow(false);
+			}} />
 			<div className={`
 					${status === 'success' ? 'bg-green-600' : 'bg-red-600'}
 					fixed top-8 right-1/2 translate-x-1/2 min-w-[250px] p-8 rounded-xl z-100 cursor-pointer text-center

@@ -23,7 +23,7 @@ const ContactForm: React.FC = () => {
     const [selectedDeliveryType, setSelectedDeliveryType] = useState<string>('office');
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [hasError, setHasError] = useState<null | string>(null);
-    const [resolved, setResolved] = useState<boolean>(false)
+    const [resolved, setResolved] = useState<boolean>(false);
 
     const onOfferChange = (event: any) => {
         setSelectedOffer(event.target.value);

@@ -2,6 +2,9 @@ import React, {useEffect, useState} from "react";
 
 import ContactForm from "@/components/UI/ContactForm";
 import BaseDialog from "@/components/UI/BaseDialog";
+import Image from "next/image";
+
+import GiftBoxImage from '../../../public/images/gift_box.webp';
 
 const options: IntersectionObserverInit = {
 	root: null,//the browser viewport
@@ -57,6 +60,13 @@ const ContactSection: React.FC = () => {
 								34.99лв&nbsp;
 							</strong>
 							<span className='text-sm lg:text-base'>с подаръчна кутия + безплатна доставка до офис</span>
+							<div className='max-w-[50%]'>
+								<Image
+									src={GiftBoxImage}
+									alt='Gift Box Image'
+									className='rounded-xl'
+								/>
+							</div>
 						</div>
 						<div className={`
 								inline-flex flex-col justify-center items-center gap-y-2 p-8 max-w-[350px] w-full
