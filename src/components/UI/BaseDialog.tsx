@@ -46,6 +46,7 @@ const Modal: React.FC<ModalProps> = ({
             <dialog
                 open
                 className='
+                    animate-showContent
                     flex flex-col justify-center items-center
                     fixed top-[20vh] left-[10%] w-[80%]
                     m-0 p-0

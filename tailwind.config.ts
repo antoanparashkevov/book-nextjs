@@ -162,7 +162,7 @@ const config: Config = {
 				}
 			},
 			animation: ({ theme }) => ({
-				showContent: "showContent 1s ease-in-out 1 forwards",
+				showContent: "showContent 0.7s ease-in-out 1 forwards",
 				"showContent-smallDelay": "showContent 1s ease-in-out 0.3s 1 forwards",
 				"showContent-bigDelay": "showContent 1s ease-in-out 0.4s 1 forwards"
 			})
