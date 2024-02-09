@@ -7,6 +7,7 @@ import BookCover from '../../../public/images/book_cover.jpg';
 
 import PersonIcon from "../../../public/icons/user.svg";
 import MessageIcon from "../../../public/icons/message.svg";
+import MarkerPinIcon from '../../../public/icons/marker-pin.svg';
 
 import Input from "./Input";
 import TextArea from "./TextArea";
@@ -18,8 +19,6 @@ import {useFormStatus} from "react-dom";
 import useInput from "@/hooks/useInput";
 
 import GiftBoxImage from '../../../public/images/gift_box.webp';
-import MarkIcon from '../../../public/icons/mark.svg';
-import Icon from "@/components/UI/Icon";
 import RadioButton from "@/components/UI/RadioButton";
 
 export type initialStateType = {
@@ -28,11 +27,15 @@ export type initialStateType = {
 
 const ContactForm: React.FC = () => {
     const formState = useFormStatus();
-    const [selectedOffer, setSelectedOffer] = useState<string>('gift')
+    const [selectedOffer, setSelectedOffer] = useState<string>('gift');
+    const [selectedDeliveryType, setSelectedDeliveryType] = useState<string>('office');
 
-    const onOptionChange = (event: any) => {
-        console.log(event)
+    const onOfferChange = (event: any) => {
         setSelectedOffer(event.target.value);
+    }
+
+    const onAddressChange = (event: any) => {
+        setSelectedDeliveryType(event.target.value);
     }
 
     const {
@@ -72,6 +75,18 @@ const ContactForm: React.FC = () => {
     );
 
     const {
+        value: enteredDeliveryAddress,
+        isValid: deliveryAddressIsValid,
+        hasError: deliveryAddressHasError,
+        valueChangeHandler: deliveryAddressChangeHandler,
+        inputBlurHandler: deliveryAddressBlurHandler,
+        reset: deliveryAddressReset
+    } = useInput(
+        (value) => value.trim().length > 0 && value.trim().length > 3,
+        ''
+    );
+
+    const {
         value: enteredMessage,
         isValid: messageIsValid,
         hasError: messageHasError,
@@ -82,7 +97,7 @@ const ContactForm: React.FC = () => {
         ''
     );
 
-    const formIsValid = firstNameIsValid && lastNameIsValid && emailIsValid && messageIsValid;
+    const formIsValid = firstNameIsValid && lastNameIsValid && emailIsValid && deliveryAddressIsValid && messageIsValid;
 
     const handleFormSubmission = async (event: FormEvent) => {
         event.preventDefault();
@@ -94,7 +109,10 @@ const ContactForm: React.FC = () => {
         console.log('firstName >>> ', enteredFirstName)
         console.log('lastName >>> ', enteredLastName)
         console.log('email >>> ', enteredEmail)
+        console.log('address >>> ', enteredDeliveryAddress)
         console.log('message >>> ', enteredMessage)
+        console.log('selected offer >>> ', selectedOffer)
+        console.log('selected delivery type >>> ', selectedDeliveryType)
     }
 
     return (
@@ -111,12 +129,12 @@ const ContactForm: React.FC = () => {
                     onSubmit={handleFormSubmission}
                     className="grid grid-cols-1 md:grid-cols-2 lg:col-span-2 gap-x-8 gap-y-6 py-20 px-6 lg:py-48 lg:px-8"
                 >
-                    <fieldset className="flex justify-center items-center gap-x-4 md:col-span-2">
+                    <fieldset className="flex flex-wrap justify-center items-center gap-4 md:col-span-2">
 
                         <RadioButton
                             id='gift'
                             value='gift'
-                            onOptionChange={onOptionChange}
+                            onOptionChange={onOfferChange}
                             selected={selectedOffer}
                         >
                             <Image
@@ -125,14 +143,15 @@ const ContactForm: React.FC = () => {
                                 className='rounded-[8px] w-1/2'
                             />
                             <p className='text-sm text-gray-500'>
-                                <strong className='text-red-600'>34.99лв</strong> с подаръчна кутия + безплатна доставка до офис
+                                <strong className='text-red-600'>34.99лв</strong> с подаръчна кутия + безплатна доставка
+                                до офис
                             </p>
                         </RadioButton>
 
                         <RadioButton
                             id='no-gift'
                             value='no-gift'
-                            onOptionChange={onOptionChange}
+                            onOptionChange={onOfferChange}
                             selected={selectedOffer}
                         >
                             <p className='text-sm text-gray-500'>
@@ -212,6 +231,69 @@ const ContactForm: React.FC = () => {
                             onChangeHandler={emailChangeHandler}
                             onBlurHandler={emailBlurHandler}
                             reset={emailReset}
+                        />
+                    </div>
+
+                    <fieldset className="flex flex-col justify-center items-start gap-y-4 md:col-span-2">
+
+                        <div className='flex gap-x-2'>
+                            <input
+                                id='office'
+                                type="radio"
+                                name='address_type'
+                                value='office'
+                                onChange={onAddressChange}
+                                checked={selectedDeliveryType === 'office'}
+                            />
+                            <label
+                                className={`text-[16px] ${selectedDeliveryType === 'office' ? 'font-bold' : 'font-normal'}`}
+                                htmlFor="office"
+                            >
+                                Доставка до офис
+                            </label>
+                        </div>
+
+                        <div className='flex gap-x-2'>
+                            <input
+                                id='address'
+                                type="radio"
+                                name='address_type'
+                                value='address'
+                                onChange={onAddressChange}
+                                checked={selectedDeliveryType === 'address'}
+                            />
+                            <label
+                                className={`text-[16px] ${selectedDeliveryType === 'address' ? 'font-bold' : 'font-normal'}`}
+                                htmlFor="address"
+                            >
+                                Доставка до адрес
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <div className={`
+                            flex flex-col justify-start items-start gap-y-[10px] md:col-span-2
+                            ${deliveryAddressHasError ? 'invalid' : ''}
+                        `}
+                    >
+                    <label
+                            htmlFor="delivery_address"
+                            className="block text-sm font-bold mb-[10px]"
+                        >
+                            Адрес за доставка
+                        </label>
+                        <Input
+                            id="delivery_address"
+                            type="text"
+                            name="delivery_address"
+                            placeholder='Адрес за доставка'
+                            showRemoveIcon
+                            iconSrc={MarkerPinIcon}
+                            iconAlt="Marker Pin Icon"
+                            enteredValue={enteredDeliveryAddress}
+                            onChangeHandler={deliveryAddressChangeHandler}
+                            onBlurHandler={deliveryAddressBlurHandler}
+                            reset={deliveryAddressReset}
                         />
                     </div>
                     <div
