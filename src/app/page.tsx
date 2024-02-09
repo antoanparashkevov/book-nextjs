@@ -1,7 +1,10 @@
+import HeroSection from "@/components/sections/HeroSection";
+import { Fragment } from "react";
+
 export default function Home() {
-  return (
-    <section>
-      test
-    </section>
-  )
+	return (
+		<Fragment>
+			<HeroSection />
+		</Fragment>
+	);
 }
