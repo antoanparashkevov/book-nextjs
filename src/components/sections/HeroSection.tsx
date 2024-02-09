@@ -30,7 +30,7 @@ const HeroSection: React.FC = () => {
 				<div className="flex items-center w-full animate-showContent-bigDelay mb-3">
 					<p className="flex self-start items-baseline">
 						<span className="text-[30px] md:text-base text-red-800 font-bold">
-							24.99лв&nbsp;
+							34.99лв&nbsp;
 						</span>
 					</p>
 					<p>с подаръчна кутия + безплатна доставка до офис</p>
@@ -44,7 +44,7 @@ const HeroSection: React.FC = () => {
 					</p>
 					<p className="flex self-start items-baseline">
 						<span className="text-[30px] md:text-base text-red-800 font-bold">
-							34.99лв
+							24.99лв
 						</span>
 					</p>
 					<p>без подаръчна кутия</p>
@@ -55,8 +55,8 @@ const HeroSection: React.FC = () => {
 				<Image
 					src={BookCover}
 					alt="Book cover"
-					placeholder="blur"
 					className="rounded-xl"
+					priority
 				/>
 			</div>
 		</section>

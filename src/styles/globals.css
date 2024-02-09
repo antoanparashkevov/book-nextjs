@@ -48,27 +48,27 @@ body, html {
     }
 }
 
-@media only screen and (max-width : 768px) {
-	.animate {
-		/*CSS transitions*/
-		-o-transition-property: none !important;
-		-moz-transition-property: none !important;
-		-ms-transition-property: none !important;
-		-webkit-transition-property: none !important;
-		transition-property: none !important;
-		/*CSS transforms*/
-		-o-transform: none !important;
-		-moz-transform: none !important;
-		-ms-transform: none !important;
-		-webkit-transform: none !important;
-		transform: none !important;
-		/*CSS animations*/
-		-webkit-animation: none !important;
-		-moz-animation: none !important;
-		-o-animation: none !important;
-		-ms-animation: none !important;
-		animation: none !important;
-	}
+@media only screen and (max-width: 768px) {
+    .animate {
+        /*CSS transitions*/
+        -o-transition-property: none !important;
+        -moz-transition-property: none !important;
+        -ms-transition-property: none !important;
+        -webkit-transition-property: none !important;
+        transition-property: none !important;
+        /*CSS transforms*/
+        -o-transform: none !important;
+        -moz-transform: none !important;
+        -ms-transform: none !important;
+        -webkit-transform: none !important;
+        transform: none !important;
+        /*CSS animations*/
+        -webkit-animation: none !important;
+        -moz-animation: none !important;
+        -o-animation: none !important;
+        -ms-animation: none !important;
+        animation: none !important;
+    }
 }
 
 @layer base {
@@ -161,10 +161,10 @@ body, html {
     }
 
     .base-btn {
-        @apply bg-purple-500 text-white text-sm font-bold py-[10px] px-[42px] rounded-[10px] shadow-md 
-                hover:bg-purple-600 
-                focus:shadow-lg 
-                disabled:opacity-[.65] disabled:cursor-not-allowed disabled:bg-gray-300;
+        @apply bg-purple-500 text-white text-sm font-bold py-[10px] px-[42px] rounded-[10px] shadow-md
+        hover:bg-purple-600
+        focus:shadow-lg
+        disabled:opacity-[.65] disabled:cursor-not-allowed disabled:bg-gray-300;
     }
 
     .accessibility {
@@ -191,6 +191,16 @@ body, html {
 
     .fade-right {
         animation-name: fade-right;
+    }
+
+    /*validation*/
+    .invalid label {
+        @apply font-bold text-red-500;
+    }
+
+    .invalid input,
+    .invalid textarea {
+        border-color: theme('colors.red.500') !important;
     }
 }
 
