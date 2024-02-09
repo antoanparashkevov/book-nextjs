@@ -4,13 +4,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
-import TooltipWrapper from "./TooltipWrapper";
-
-type tooltipOptions = {
-	activateTooltip: boolean;
-	tooltipContent: string;
-};
-
 export type iconProps = {
 	parentClassName?: string | [] | {};
 	className?: string;
@@ -20,7 +13,6 @@ export type iconProps = {
 	alt: string;
 	href?: string;
 	target?: string;
-	tooltipOptions?: tooltipOptions;
 };
 
 const Icon: React.FC<iconProps> = ({
@@ -32,7 +24,6 @@ const Icon: React.FC<iconProps> = ({
 	alt,
 	href,
 	target,
-	tooltipOptions
 }) => {
 	const [showTooltip, setShowTooltip] = useState<boolean>(false);
 
@@ -40,7 +31,6 @@ const Icon: React.FC<iconProps> = ({
 		<div
 			className={`
                 ${parentClassName || ""}
-                ${tooltipOptions?.activateTooltip ? "cursor-pointer" : ""}
                 relative
             `}
 			onMouseOver={() => setShowTooltip(true)}
@@ -62,9 +52,6 @@ const Icon: React.FC<iconProps> = ({
 				height={height}
 				priority
 			/>
-			{tooltipOptions?.activateTooltip && showTooltip && (
-				<TooltipWrapper content={tooltipOptions.tooltipContent} />
-			)}
 		</div>
 	);
 };
