@@ -36,7 +36,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
                     flex flex-col justify-center items-center
                     w-[200px] h-[170px] p-1
                     border-[1px] border-solid rounded-xl
-                    ${selected === value ? 'border-purple-500 shadow-xl' : 'border-transparent shadow-none'}
+                    ${selected === value ? 'border-purple-500 shadow-xl' : 'border-transparent shadow-lg'}
                     cursor-pointer shadow-purple-300
                 `}
             >
