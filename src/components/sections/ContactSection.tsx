@@ -26,13 +26,11 @@ const ContactSection: React.FC = () => {
 	};
 
 	useEffect(() => {
-		console.log('inside useEffect')
 		let observer = new IntersectionObserver(callback, options);
 
 		if( !closeFromModal ) {
 			observer.observe(document.getElementById('contact')!);
 		} else {
-			console.log('unobserving...')
 			observer.unobserve(document.getElementById('contact')!);
 		}
 
