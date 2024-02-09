@@ -32,6 +32,7 @@ export default function RootLayout({
 			className={`${source_sans_3.variable} font-sans`}
 		>
 			<body className="min-w-[360px] w-full min-h-screen flex flex-col text-main text-base">
+				<div id="backdrop" />
 				<div id="overlay" />
 				<header className="container flex w-full min-h-[130px] mb-16">
 					<TheHeader />

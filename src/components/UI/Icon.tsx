@@ -6,6 +6,7 @@ import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 export type iconProps = {
 	parentClassName?: string | [] | {};
+	onClick?: () => void;
 	className?: string;
 	src: string | StaticImport;
 	width?: number;
@@ -16,7 +17,8 @@ export type iconProps = {
 };
 
 const Icon: React.FC<iconProps> = ({
-	parentClassName,
+	parentClassName = '',
+	onClick,
 	className,
 	src,
 	width,
@@ -29,10 +31,8 @@ const Icon: React.FC<iconProps> = ({
 
 	return (
 		<div
-			className={`
-                ${parentClassName || ""}
-                relative
-            `}
+			className={`relative ${parentClassName}`.trim()}
+			onClick={onClick}
 			onMouseOver={() => setShowTooltip(true)}
 			onMouseLeave={() => setShowTooltip(false)}
 		>
