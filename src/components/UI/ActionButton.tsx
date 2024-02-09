@@ -11,10 +11,15 @@ const ActionButton: React.FC<{
 	return (
 		<Link
 			href={href || "/"}
-			className={`flex gap-x-1 text-sm font-bold ${className || ""}`}
+			className={`flex items-center gap-x-1 text-sm font-bold ${className || ""}`}
 		>
 			{children}
-			<Icon src={ArrowIcon} alt="Arrow Icon" width={15} height={15} />
+			<Icon
+				src={ArrowIcon}
+				alt="Arrow Icon"
+				width={15}
+				height={15}
+			/>
 		</Link>
 	);
 };
