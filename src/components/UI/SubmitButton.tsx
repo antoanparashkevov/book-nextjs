@@ -6,7 +6,10 @@ const Notification = dynamic(() => import('./Notification'));
 
 import type { initialStateType } from "./ContactForm";
 
-const SubmitButton: React.FC<{formState?: initialStateType}> = ({formState}) => {
+const SubmitButton: React.FC<{formState?: initialStateType, formIsValid: boolean}> = ({
+	formState,
+	formIsValid
+}) => {
 	const { pending } = useFormStatus();
 
 	return (
@@ -26,8 +29,8 @@ const SubmitButton: React.FC<{formState?: initialStateType}> = ({formState}) => 
 			{/*)}*/}
 			<button
 				type="submit"
-				aria-disabled={pending}
-				disabled={pending}
+				aria-disabled={pending || !formIsValid}
+				disabled={pending || !formIsValid}
 				className="base-btn"
             >
 				{pending ? "Изпращане..." : "Поръчай"}

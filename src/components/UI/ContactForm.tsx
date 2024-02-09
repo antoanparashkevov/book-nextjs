@@ -205,7 +205,7 @@ const ContactForm: React.FC = () => {
                         />
                     </div>
                     <div className="flex justify-end md:col-span-2">
-                        <SubmitButton/>
+                        <SubmitButton formIsValid={formIsValid}/>
                     </div>
                 </form>
             </section>
