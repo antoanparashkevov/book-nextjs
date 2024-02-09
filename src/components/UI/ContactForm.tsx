@@ -2,33 +2,28 @@
 
 import React, {FormEvent, Fragment, useState} from "react";
 import Image from 'next/image';
+import dynamic from "next/dynamic";
 
-import BookCover from '../../../public/images/book_cover.jpg';
+import useInput from "@/hooks/useInput";
+
+const Notification = dynamic(() => import('./Notification'));
+const RadioButton = dynamic(() => import('./RadioButton'));
+const Input = dynamic(() => import('./Input'));
+const TextArea = dynamic(() => import('./TextArea'));
 
 import PersonIcon from "../../../public/icons/user.svg";
 import MessageIcon from "../../../public/icons/message.svg";
 import MarkerPinIcon from '../../../public/icons/marker-pin.svg';
 
-import Input from "./Input";
-import TextArea from "./TextArea";
-
-const SubmitButton = dynamic(() => import("./SubmitButton"));
-
-import dynamic from "next/dynamic";
-import {useFormStatus} from "react-dom";
-import useInput from "@/hooks/useInput";
-
+import BookCover from '../../../public/images/book_cover.jpg';
 import GiftBoxImage from '../../../public/images/gift_box.webp';
-import RadioButton from "@/components/UI/RadioButton";
-
-export type initialStateType = {
-    message: string,
-}
 
 const ContactForm: React.FC = () => {
-    const formState = useFormStatus();
     const [selectedOffer, setSelectedOffer] = useState<string>('gift');
     const [selectedDeliveryType, setSelectedDeliveryType] = useState<string>('office');
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [hasError, setHasError] = useState<null | string>(null);
+    const [resolved, setResolved] = useState<boolean>(false)
 
     const onOfferChange = (event: any) => {
         setSelectedOffer(event.target.value);
@@ -101,6 +96,9 @@ const ContactForm: React.FC = () => {
 
     const handleFormSubmission = async (event: FormEvent) => {
         event.preventDefault();
+        setIsLoading(false);
+        setHasError(null);
+        setResolved(false);
 
         if(!formIsValid) {
             return;
@@ -113,10 +111,65 @@ const ContactForm: React.FC = () => {
         console.log('message >>> ', enteredMessage)
         console.log('selected offer >>> ', selectedOffer)
         console.log('selected delivery type >>> ', selectedDeliveryType)
+
+        try {
+            setIsLoading(true);
+            const response: Response = await fetch('https://formsubmit.co/ajax/antoanparashkevov@gmail.com', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    firstName: enteredFirstName,
+                    lastName: enteredLastName,
+                    email: enteredEmail,
+                    address: enteredDeliveryAddress,
+                    addressType: selectedDeliveryType,
+                    message: enteredMessage,
+                    selectedOffer: selectedOffer
+                })
+            })
+
+            if( response && !response.ok ) {
+                throw new Error("Възникна грешка при изпращането на формата! Опитайте отново!")
+            }
+
+            const data: { success: "true" | "false", message: string } = await response.json();
+
+            if( data!.success === 'false' ) {
+                throw new Error("Възникна грешка при изпращането на формата! Опитайте отново!");
+            }
+
+            setIsLoading(false);
+            setResolved(true);
+
+            // firstNameReset();
+            // lastNameReset();
+            // emailReset();
+            // deliveryAddressReset();
+
+        } catch (error) {
+            setIsLoading(false);
+            setResolved(true);
+            if (error instanceof Error) {
+                setHasError(error.message || "Възникна грешка при изпращането на формата! Опитайте отново!");
+            }
+        }
     }
 
     return (
         <Fragment>
+            { resolved &&
+                <Notification
+                    status={hasError ? 'error' : 'success'}
+                    timeout={4000}
+                >
+                    { hasError ??
+                        'Успешно приехме Вашата поръчка! Благодарим Ви!'
+                    }
+                </Notification>
+            }
             <section className="grid grid-cols-1 lg:grid-cols-3 w-full">
                 <div className='py-20 px-4 lg:py-48 shadow-[4px_0px_0px_0px_rgba(0,_0,_0,_0.11)]'>
                     <Image
@@ -167,7 +220,7 @@ const ContactForm: React.FC = () => {
                         `}
                     >
                         <label htmlFor="firstName" className="block text-sm font-bold">
-                            Собствено име
+                            Собствено име*
                         </label>
                         <Input
                             id="firstName"
@@ -191,7 +244,7 @@ const ContactForm: React.FC = () => {
                         `}
                     >
                         <label htmlFor="lastName" className="block text-sm font-bold">
-                            Фамилно име
+                            Фамилно име*
                         </label>
                         <Input
                             id="lastName"
@@ -217,7 +270,7 @@ const ContactForm: React.FC = () => {
                             htmlFor="email"
                             className="block text-sm font-bold mb-[10px]"
                         >
-                            Имейл
+                            Имейл*
                         </label>
                         <Input
                             id="email"
@@ -280,7 +333,7 @@ const ContactForm: React.FC = () => {
                             htmlFor="delivery_address"
                             className="block text-sm font-bold mb-[10px]"
                         >
-                            Адрес за доставка
+                            Адрес за доставка*
                         </label>
                         <Input
                             id="delivery_address"
@@ -319,7 +372,14 @@ const ContactForm: React.FC = () => {
                         />
                     </div>
                     <div className="flex justify-end md:col-span-2">
-                        <SubmitButton formIsValid={formIsValid}/>
+                        <button
+                            type="submit"
+                            aria-disabled={isLoading || !formIsValid}
+                            disabled={isLoading || !formIsValid}
+                            className="base-btn"
+                        >
+                            {isLoading ? "Изпращане..." : "Поръчай"}
+                        </button>
                     </div>
                 </form>
             </section>
