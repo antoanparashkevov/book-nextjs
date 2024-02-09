@@ -5,7 +5,7 @@ import Link from "next/link";
 const TheHeader: React.FC = () => {
 	return (
 		<nav className="flex justify-between items-center w-full min-h-full">
-			<h3 className="cursor-pointer text-purple-500 flex-grow text-center">
+			<h3 className="cursor-pointer text-purple-500 text-center text-sm lg:text-lg">
 				<Link href="/">69+ вълнуващи места за любов</Link>
 			</h3>
 			<ul role="list">

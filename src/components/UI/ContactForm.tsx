@@ -117,7 +117,7 @@ const ContactForm: React.FC = () => {
 
     return (
         <Fragment>
-            <section id="contact" className="grid grid-cols-1 lg:grid-cols-3 w-full">
+            <section className="grid grid-cols-1 lg:grid-cols-3 w-full">
                 <div className='py-20 px-4 lg:py-48 shadow-[4px_0px_0px_0px_rgba(0,_0,_0,_0.11)]'>
                     <Image
                         src={BookCover}

@@ -56,7 +56,7 @@ const Input: React.FC<inputProps> = ({
                 className='
                     w-full block py-3 pl-10 pr-10 bg-white text-sm text-gray-500 border rounded-3xl border-gray-300 shadow-sm
                     placeholder:text-gray-400
-                    focus:outline-none focus:border-kingfisher-daisy-900 focus:bg-magnolia-50
+                    focus:outline-none focus:border-kingfisher-daisy-900 focus:bg-[#faf6ff]
                     disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
                 '
                 id={id}
