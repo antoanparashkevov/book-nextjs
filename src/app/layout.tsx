@@ -4,6 +4,7 @@ import { Source_Sans_3 } from "next/font/google";
 import "../styles/globals.css";
 
 import TheHeader from "@/components/layout/TheHeader";
+import React from "react";
 
 const source_sans_3 = Source_Sans_3({
 	weight: ["400", "600", "700"],
@@ -40,8 +41,16 @@ export default function RootLayout({
 				<main className="container flex flex-col flex-grow justify-start items-center">
 					{children}
 				</main>
-				<footer className="min-h-[90px] flex items-end">
-					<span className="block w-full h-1 bg-purple-600"></span>
+				<footer className="min-h-[50px] flex flex-col justify-between items-end">
+					<div className='flex gap-x-6'>
+						<a href="tel:+359885956435" className='block hover:underline text-sm lg:text-base'>
+							<span>+359885956435</span>
+						</a>
+						<a href="mailto:supp.lovejourney69@abv.bg" className='block mr-4 hover:underline text-sm lg:text-base'>
+							<span>supp.lovejourney69@abv.bg</span>
+						</a>
+					</div>
+					<span className="block w-full h-1 bg-purple-600"/>
 				</footer>
 			</body>
 		</html>
