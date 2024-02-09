@@ -44,31 +44,42 @@ const ContactSection: React.FC = () => {
 		<section id='contact' className="w-full">
 			{showModal && !closeFromModal &&
 				<BaseDialog
-					title='Разгледай нашата специална оферта'
+					title='Нашите оферти за теб'
 					fixed={false}
 					tryClose={() => setCloseFromModal(true)}
 				>
-					<div
-						className="flex items-center justify-start w-full gap-x-2 lg:gap-x-0 animate-showContent-bigDelay mb-3">
-						<strong className="text-base lg:text-[30px] text-red-800">
-							34.99лв&nbsp;
-						</strong>
-						<span className='text-sm lg:text-base'>с подаръчна кутия + безплатна доставка до офис</span>
-					</div>
-					<div className="flex items-end h-[55px] w-full animate-showContent-bigDelay mb-3">
-						<p className="relative flex items-baseline">
-							<span
-								className="absolute bottom-0 left-0 origin-left -rotate-[25deg] w-[60px] lg:w-[70px] h-[3px] bg-black"/>
-							<span className="text-base lg:text-[30px] font-extralight">
-							49.99лв
-						</span>
-						</p>
-						<p className="flex self-start items-baseline">
-						<span className="text-base md:text-[30px] text-red-800 font-bold">
-							24.99лв
-						</span>
-						</p>
-						<span className='text-sm lg:text-base'>без подаръчна кутия</span>
+					<div className='flex flex-wrap justify-center gap-4'>
+
+						<div className={`
+								inline-flex flex-col justify-center items-center gap-y-2 p-8 max-w-[350px] w-full
+							 	border border-solid border-gray-500 rounded-xl
+							`.trim()}
+						>
+							<strong className="text-base lg:text-[30px] text-red-800">
+								34.99лв&nbsp;
+							</strong>
+							<span className='text-sm lg:text-base'>с подаръчна кутия + безплатна доставка до офис</span>
+						</div>
+						<div className={`
+								inline-flex flex-col justify-center items-center gap-y-2 p-8 max-w-[350px] w-full
+							 	border border-solid border-gray-500 rounded-xl
+							`.trim()}
+						>
+							<div className='flex justify-center items-end gap-x-2 w-full'>
+								<p className="relative flex items-baseline">
+									<span className="absolute bottom-0 left-0 origin-left -rotate-[25deg] w-[60px] lg:w-[70px] h-[3px] bg-black"/>
+									<span className="text-base lg:text-[30px] font-extralight">
+										49.99лв
+									</span>
+								</p>
+								<p className="flex self-start items-baseline">
+								<span className="text-base lg:text-[30px] text-red-800 font-bold">
+									24.99лв
+								</span>
+								</p>
+							</div>
+							<span className='text-sm lg:text-base'>без подаръчна кутия</span>
+						</div>
 					</div>
 				</BaseDialog>
 			}

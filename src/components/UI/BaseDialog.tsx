@@ -58,7 +58,7 @@ const Modal: React.FC<ModalProps> = ({
                             onClick={tryClose}
                             className="
                                 relative block
-                                w-[32px] h-[32px] opacity-30
+                                w-[32px] h-[32px] opacity-30 cursor-pointer
                                 hover:opacity-100
                                 after:absolute after:left-[15px] after:w-[2px] after:h-[33px] after:bg-[#333]
                                 after:-rotate-45
@@ -80,8 +80,8 @@ const Modal: React.FC<ModalProps> = ({
                         />
                     </div>
                 }
-                <header className='w-full p-4 bg-green-500'>
-                    <h2 className='text-white text-xl font-bold'>{title}</h2>
+                <header className='w-full pt-8 pb-2 px-4 bg-green-500'>
+                    <h2 className='text-white text-lg lg:text-xl font-bold'>{title}</h2>
                 </header>
                 <section className='w-full p-4'>
                     {children}
