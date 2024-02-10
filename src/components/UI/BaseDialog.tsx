@@ -48,7 +48,7 @@ const Modal: React.FC<ModalProps> = ({
                 className='
                     animate-showContent
                     flex flex-col justify-center items-center
-                    fixed top-[20vh] left-[10%] w-[80%]
+                    fixed top-[10vh] left-[10%] w-[80%]
                     m-0 p-0
                     border-0 rounded-[24px] bg-white shadow-xl z-100 overflow-hidden
                 '

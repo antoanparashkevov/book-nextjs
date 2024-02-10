@@ -54,7 +54,6 @@ const HeroSection: React.FC = () => {
 					src={BookCover}
 					alt="Book cover"
 					className="rounded-xl"
-					priority
 				/>
 			</div>
 		</section>

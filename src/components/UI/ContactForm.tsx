@@ -16,7 +16,7 @@ import MessageIcon from "../../../public/icons/message.svg";
 import MarkerPinIcon from '../../../public/icons/marker-pin.svg';
 
 import BookCover from '../../../public/images/book_cover.jpg';
-import GiftBoxImage from '../../../public/images/gift_box.webp';
+import GiftBoxImage from '../../../public/images/gift_box_new_2.webp';
 
 const ContactForm: React.FC = () => {
     const [selectedOffer, setSelectedOffer] = useState<string>('gift');
@@ -125,9 +125,9 @@ const ContactForm: React.FC = () => {
                     lastName: enteredLastName,
                     email: enteredEmail,
                     address: enteredDeliveryAddress,
-                    addressType: selectedDeliveryType,
+                    addressType: selectedDeliveryType === 'office' ? 'до офис' : 'до адрес',
                     message: enteredMessage,
-                    selectedOffer: selectedOffer
+                    selectedOffer: selectedOffer === 'gift' ? 'с подаръчна кутия' : 'без подаръчна кутия'
                 })
             })
 
@@ -193,7 +193,7 @@ const ContactForm: React.FC = () => {
                             <Image
                                 src={GiftBoxImage}
                                 alt='Gift box'
-                                className='rounded-[8px] w-1/2'
+                                className='rounded-[8px] w-[35%]'
                             />
                             <p className='text-sm text-gray-500'>
                                 <strong className='text-red-600'>34.99лв</strong> с подаръчна кутия + безплатна доставка

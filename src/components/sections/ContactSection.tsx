@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react";
-
-import ContactForm from "@/components/UI/ContactForm";
-import BaseDialog from "@/components/UI/BaseDialog";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 
-import GiftBoxImage from '../../../public/images/gift_box.webp';
+import ContactForm from "@/components/UI/ContactForm";
+const BaseDialog = dynamic(() => import('@/components/UI/BaseDialog'));
+
+import GiftBoxImage from '../../../public/images/gift_box_new_1.webp';
 
 const options: IntersectionObserverInit = {
 	root: null,//the browser viewport
