@@ -41,7 +41,7 @@ export default function RootLayout({
 				<main className="container flex flex-col flex-grow justify-start items-center">
 					{children}
 				</main>
-				<footer className="min-h-[50px] flex flex-col justify-between items-end">
+				<footer className="min-h-[50px] flex flex-col justify-between items-end mt-12">
 					<div className='flex gap-x-6'>
 						<a href="tel:+359885956435" className='block hover:underline text-sm lg:text-base'>
 							<span>+359885956435</span>

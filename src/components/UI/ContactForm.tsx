@@ -14,6 +14,7 @@ const TextArea = dynamic(() => import('./TextArea'));
 import PersonIcon from "../../../public/icons/user.svg";
 import MessageIcon from "../../../public/icons/message.svg";
 import MarkerPinIcon from '../../../public/icons/marker-pin.svg';
+import PhoneIcon from "../../../public/icons/phone.svg";
 
 import BookCover from '../../../public/images/book_cover.jpg';
 import GiftBoxImage from '../../../public/images/gift_box_new_2.webp';
@@ -70,6 +71,18 @@ const ContactForm: React.FC = () => {
     );
 
     const {
+        value: enteredPhone,
+        isValid: phoneIsValid,
+        hasError: phoneHasError,
+        valueChangeHandler: phoneChangeHandler,
+        inputBlurHandler: phoneBlurHandler,
+        reset: phoneReset
+    } = useInput(
+        (value) => value.trim().length > 0 && value.trim().length > 5,
+        ''
+    );
+
+    const {
         value: enteredDeliveryAddress,
         isValid: deliveryAddressIsValid,
         hasError: deliveryAddressHasError,
@@ -103,12 +116,13 @@ const ContactForm: React.FC = () => {
 
         await fetchData(
             ['https://formsubmit.co/ajax/antoanparashkevov@gmail.com', 'https://formsubmit.co/ajax/tonkata1505@gmail.com'],
-            10000,
+            15000,
             'POST',
             {
                 firstName: enteredFirstName,
                 lastName: enteredLastName,
                 email: enteredEmail,
+                phoneNumber: enteredPhone,
                 address: enteredDeliveryAddress,
                 addressType: selectedDeliveryType === 'office' ? 'до офис' : 'до адрес',
                 message: enteredMessage,
@@ -129,8 +143,8 @@ const ContactForm: React.FC = () => {
                     }
                 </Notification>
             }
-            <section className="grid grid-cols-1 lg:grid-cols-3 w-full">
-                <div className='py-20 px-4 lg:py-48 shadow-[4px_0px_0px_0px_rgba(0,_0,_0,_0.11)]'>
+            <section className="grid grid-cols-1 lg:grid-cols-3 gap-y-12 w-full">
+                <div className='py-16 px-4 lg:py-48 shadow-[0px_4px_0px_0px_rgba(0,_0,_0,_0.11)] lg:shadow-[4px_0px_0px_0px_rgba(0,_0,_0,_0.11)]'>
                     <Image
                         src={BookCover}
                         alt='Book Cover'
@@ -139,7 +153,7 @@ const ContactForm: React.FC = () => {
                 </div>
                 <form
                     onSubmit={handleFormSubmission}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:col-span-2 gap-x-8 gap-y-6 py-20 px-6 lg:py-48 lg:px-8"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:col-span-2 gap-x-8 gap-y-6 px-6 lg:px-8"
                 >
                     <fieldset className="flex flex-wrap justify-center items-center gap-4 md:col-span-2">
 
@@ -246,6 +260,32 @@ const ContactForm: React.FC = () => {
                         />
                     </div>
 
+                    <div className={`
+                            flex flex-col justify-start items-start gap-y-[10px] md:col-span-2
+                            ${phoneHasError ? 'invalid' : ''}
+                        `}
+                    >
+                        <label
+                            htmlFor="phone_number"
+                            className="block text-sm font-bold mb-[10px]"
+                        >
+                            Телефонен номер*
+                        </label>
+                        <Input
+                            id="phone_number"
+                            type="tel"
+                            name="phone_number"
+                            placeholder='Вашият телефонен номер'
+                            showRemoveIcon
+                            iconSrc={PhoneIcon}
+                            iconAlt="Phone Icon"
+                            enteredValue={enteredPhone}
+                            onChangeHandler={phoneChangeHandler}
+                            onBlurHandler={phoneBlurHandler}
+                            reset={phoneReset}
+                        />
+                    </div>
+
                     <fieldset className="flex flex-col justify-center items-start gap-y-4 md:col-span-2">
 
                         <div className='flex gap-x-2'>
@@ -288,7 +328,7 @@ const ContactForm: React.FC = () => {
                             ${deliveryAddressHasError ? 'invalid' : ''}
                         `}
                     >
-                    <label
+                        <label
                             htmlFor="delivery_address"
                             className="block text-sm font-bold mb-[10px]"
                         >
