@@ -27,13 +27,9 @@ A product page designed by a client request
 - <a href="https://tailwindcss.com/">TailwindCSS</a>
 
 # <p id="application-pictures">Application Pictures</p>
-![hero_section](https://github.com/antoanparashkevov/antoanp-nextjs/assets/80749603/19d541a4-1a11-4938-a612-3a8d2fe2ee82)
-![introduction_section](https://github.com/antoanparashkevov/antoanp-nextjs/assets/80749603/476e5455-d26f-4d95-94b1-3609459afc98)
-![benefits_section](https://github.com/antoanparashkevov/antoanp-nextjs/assets/80749603/582ae152-6d3e-4eb9-853f-e1553c805e7f)
-![about_me_section](https://github.com/antoanparashkevov/antoanp-nextjs/assets/80749603/95c142b2-1d04-454a-ab68-76f424eaa7cc)
-![testimonials_section](https://github.com/antoanparashkevov/antoanp-nextjs/assets/80749603/b274339a-6bc5-440c-b17e-b7e011ef8489)
-![tickets_section](https://github.com/antoanparashkevov/antoanp-nextjs/assets/80749603/9bf1d739-83ba-44a1-b821-681f410ce4ae)
-![contact_form_section](https://github.com/antoanparashkevov/antoanp-nextjs/assets/80749603/8997bed7-d16e-4886-83a4-b62579efe1d8)
+![hero_section]()
+![description_section]()
+![contact_form_section]()
 
 
 
