@@ -13,10 +13,8 @@ const HeroSection: React.FC = () => {
 					любов
 				</h1>
 
-				<p className="text-lg max-lg:text-black mb-8 animate-showContent-smallDelay">
-					Вкарай доза&nbsp;
-					<span className="text-purple-500 max-lg:font-bold">приключение</span>&nbsp;в своето
-					ежедневие!
+				<p className="text-lg max-lg:text-white max-lg:font-bold mb-8 animate-showContent-smallDelay">
+					Вкарай доза <span className="lg:text-purple-500">приключение</span> в своето ежедневие!
 				</p>
 
 				<Link
@@ -25,7 +23,8 @@ const HeroSection: React.FC = () => {
 				>
 					Купи сега
 				</Link>
-				<div className="
+				<div
+					className="
 						flex justify-start items-center w-full max-lg:gap-x-2 mb-3
 						animate-showContent-bigDelay
 						max-lg:absolute max-lg:left-0 max-lg:bottom-[-85px]
@@ -34,9 +33,12 @@ const HeroSection: React.FC = () => {
 					<strong className="text-base lg:text-[30px] text-red-800">
 						34.99лв&nbsp;
 					</strong>
-					<span className='text-[1rem] lg:text-base'>с подаръчна кутия + безплатна доставка до офис</span>
+					<span className="text-[1rem] lg:text-base">
+						с подаръчна кутия + безплатна доставка до офис
+					</span>
 				</div>
-				<div className="
+				<div
+					className="
 						flex items-end h-[55px] w-full mb-3
 						animate-showContent-bigDelay
 						max-lg:absolute max-lg:left-0 max-lg:bottom-[-155px]
@@ -53,11 +55,12 @@ const HeroSection: React.FC = () => {
 							24.99лв
 						</span>
 					</p>
-					<span className='text-sm lg:text-base'>без подаръчна кутия</span>
+					<span className="text-sm lg:text-base">без подаръчна кутия</span>
 				</div>
 			</div>
 
-			<div className="
+			<div
+				className="
 					max-lg:absolute max-lg:-z-10 max-lg:inset-0
 					lg:flex-grow
 				"
