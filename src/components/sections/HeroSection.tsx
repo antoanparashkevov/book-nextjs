@@ -3,12 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import BookCover from "../../../public/images/book_cover.jpg";
-import LinearGradient from "../UI/LinearGradient";
 
 const HeroSection: React.FC = () => {
 	return (
 		<section className="relative lg:flex lg:gap-x-14 lg:items-center w-full max-lg:mb-40">
-			<LinearGradient className="top-8 right-0" />
 			<div className="flex flex-col items-start lg:flex-shrink-0 max-w-[36rem] w-full lg:mb-8 max-lg:p-4">
 				<h1 className="text-xl lg:text-2xl mb-16 animate-showContent">
 					<span className="text-purple-500">69+</span>&nbsp;Вълнуващи места за

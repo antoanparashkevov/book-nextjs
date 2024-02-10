@@ -1,10 +1,11 @@
+import React from "react";
 import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
 
 import "../styles/globals.css";
 
 import TheHeader from "@/components/layout/TheHeader";
-import React from "react";
+import LinearGradient from "@/components/UI/LinearGradient";
 
 const source_sans_3 = Source_Sans_3({
 	weight: ["400", "600", "700"],
@@ -32,7 +33,8 @@ export default function RootLayout({
 			lang='bg'
 			className={`${source_sans_3.variable} font-sans`}
 		>
-			<body className="min-w-[360px] w-full min-h-screen flex flex-col text-main text-base">
+			<body className="relative min-w-[360px] w-full min-h-screen flex flex-col text-main text-base">
+				<LinearGradient/>
 				<div id="backdrop" />
 				<div id="overlay" />
 				<header className="container flex w-full min-h-[130px] mb-16">
