@@ -43,12 +43,25 @@ export default function RootLayout({
 				</main>
 				<footer className="min-h-[50px] flex flex-col justify-between items-end mt-12">
 					<div className='flex gap-x-6'>
-						<a href="tel:+359885956435" className='block hover:underline text-sm lg:text-base'>
-							<span>+359885956435</span>
-						</a>
-						<a href="mailto:supp.lovejourney69@abv.bg" className='block mr-4 hover:underline text-sm lg:text-base'>
-							<span>supp.lovejourney69@abv.bg</span>
-						</a>
+						<span className='text-sm lg:text-base'>
+							Контакт за връзка:
+							<a
+								href="tel:+359885956435"
+								className='block hover:underline'
+							>
+								<span>+359885956435</span>
+							</a>
+						</span>
+
+						<span className='text-sm lg:text-base'>
+							Имейл:
+							<a
+								href="mailto:supp.lovejourney69@abv.bg"
+								className='block mr-4 hover:underline'
+							>
+								<span>supp.lovejourney69@abv.bg</span>
+							</a>
+						</span>
 					</div>
 					<span className="block w-full h-1 bg-purple-600"/>
 				</footer>
