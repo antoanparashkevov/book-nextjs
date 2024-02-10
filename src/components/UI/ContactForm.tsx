@@ -145,13 +145,6 @@ const ContactForm: React.FC = () => {
                 </Notification>
             }
             <section className="grid grid-cols-1 lg:grid-cols-3 gap-y-12 w-full">
-                <div className='py-16 px-4 lg:py-48 shadow-[0px_4px_0px_0px_rgba(0,_0,_0,_0.11)] lg:shadow-[4px_0px_0px_0px_rgba(0,_0,_0,_0.11)]'>
-                    <Image
-                        src={BookCover}
-                        alt='Book Cover'
-                        className="rounded-xl"
-                    />
-                </div>
                 <form
                     onSubmit={handleFormSubmission}
                     className="relative grid grid-cols-1 md:grid-cols-2 lg:col-span-2 gap-x-8 gap-y-6 px-6 lg:px-8"
@@ -383,6 +376,20 @@ const ContactForm: React.FC = () => {
                         </button>
                     </div>
                 </form>
+                <div
+                    className='
+                        py-16 px-4 lg:py-48
+                        shadow-[0px_4px_0px_0px_rgba(0,_0,_0,_0.11)]
+                        lg:shadow-[-4px_0px_0px_0px_rgba(0,_0,_0,_0.11)]
+                        max-lg:-order-1
+                    '
+                >
+                    <Image
+                        src={BookCover}
+                        alt='Book Cover'
+                        className="rounded-xl"
+                    />
+                </div>
             </section>
         </Fragment>
     );
