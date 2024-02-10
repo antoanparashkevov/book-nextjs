@@ -105,7 +105,7 @@ const ContactForm: React.FC = () => {
         ''
     );
 
-    const formIsValid = firstNameIsValid && lastNameIsValid && emailIsValid && deliveryAddressIsValid && messageIsValid;
+    const formIsValid = firstNameIsValid && lastNameIsValid && emailIsValid && deliveryAddressIsValid && messageIsValid && phoneIsValid;
 
     const handleFormSubmission = async (event: FormEvent) => {
         event.preventDefault();
