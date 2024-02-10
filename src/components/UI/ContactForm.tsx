@@ -102,7 +102,7 @@ const ContactForm: React.FC = () => {
         }
 
         await fetchData(
-            ['https://formsubmit.co/ajax/antoanparashkevov@gmail.com', 'https://formsubmit.co/ajax/tonkata1505@gmail.com'],
+            ['https://formsubmit.co/ajax/tonkata1505@gmail.com', 'https://formsubmit.co/ajax/antoanparashkevov@gmail.com'],
             10000,
             'POST',
             {
