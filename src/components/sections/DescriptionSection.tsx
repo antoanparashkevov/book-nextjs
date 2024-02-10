@@ -1,9 +1,11 @@
 import React from "react";
+import LinearGradient from "@/components/UI/LinearGradient";
 
 const DescriptionSection: React.FC = () => {
 
     return (
-        <section className='container-sm flex flex-col justify-center items-center w-full lg:px-16'>
+        <section className='relative container-sm flex flex-col justify-center items-center w-full lg:px-16'>
+            <LinearGradient/>
             <h2 className='text-center mb-4'>Впуснете се в приключение с „69+ вълнуващи места за любов“</h2>
             <p className='mb-3'>
                 Осмелете се да откриете любовта на най-неочакваните места.

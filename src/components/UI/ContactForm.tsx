@@ -20,6 +20,7 @@ import BookCover from '../../../public/images/book_cover.jpg';
 import GiftBoxImage from '../../../public/images/gift_box_new_2.webp';
 
 import useFetchMultipleEndpoints from "@/hooks/useFetchMultipleEndpoints";
+import LinearGradient from "@/components/UI/LinearGradient";
 
 const ContactForm: React.FC = () => {
     const [selectedOffer, setSelectedOffer] = useState<string>('gift');
@@ -153,8 +154,9 @@ const ContactForm: React.FC = () => {
                 </div>
                 <form
                     onSubmit={handleFormSubmission}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:col-span-2 gap-x-8 gap-y-6 px-6 lg:px-8"
+                    className="relative grid grid-cols-1 md:grid-cols-2 lg:col-span-2 gap-x-8 gap-y-6 px-6 lg:px-8"
                 >
+                    <LinearGradient/>
                     <fieldset className="flex flex-wrap justify-center items-center gap-4 md:col-span-2">
 
                         <RadioButton
