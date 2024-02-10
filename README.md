@@ -27,11 +27,11 @@ A product page designed by a client request
 - <a href="https://tailwindcss.com/">TailwindCSS</a>
 
 # <p id="application-pictures">Application Pictures</p>
-![hero_section]()
-![description_section]()
-![contact_form_section]()
-
-
+![hero_section_d](https://github.com/antoanparashkevov/book-nextjs/assets/80749603/a0bcffb2-9fee-49d0-bf63-18c6fbeb8059)
+![contact_section_d](https://github.com/antoanparashkevov/book-nextjs/assets/80749603/367c2612-ab94-40ab-b41e-7d50cb9b9e04)
+![dialog](https://github.com/antoanparashkevov/book-nextjs/assets/80749603/5f64e335-e2d5-4382-86e5-eafe42dc1362)
+![hero_section_m](https://github.com/antoanparashkevov/book-nextjs/assets/80749603/c422f27f-a941-45be-aa8e-f37ecd4f6e18)
+![contact_section_m](https://github.com/antoanparashkevov/book-nextjs/assets/80749603/0523d247-f8df-433e-b61d-a9714769c1ca)
 
 
 
