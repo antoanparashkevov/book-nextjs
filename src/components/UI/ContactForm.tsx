@@ -18,12 +18,12 @@ import MarkerPinIcon from '../../../public/icons/marker-pin.svg';
 import BookCover from '../../../public/images/book_cover.jpg';
 import GiftBoxImage from '../../../public/images/gift_box_new_2.webp';
 
+import useFetchMultipleEndpoints from "@/hooks/useFetchMultipleEndpoints";
+
 const ContactForm: React.FC = () => {
     const [selectedOffer, setSelectedOffer] = useState<string>('gift');
     const [selectedDeliveryType, setSelectedDeliveryType] = useState<string>('office');
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [hasError, setHasError] = useState<null | string>(null);
-    const [resolved, setResolved] = useState<boolean>(false);
+    const { isLoading, error, resolved, fetchData } = useFetchMultipleEndpoints();
 
     const onOfferChange = (event: any) => {
         setSelectedOffer(event.target.value);
@@ -96,76 +96,35 @@ const ContactForm: React.FC = () => {
 
     const handleFormSubmission = async (event: FormEvent) => {
         event.preventDefault();
-        setIsLoading(false);
-        setHasError(null);
-        setResolved(false);
 
         if(!formIsValid) {
             return;
         }
 
-        console.log('firstName >>> ', enteredFirstName)
-        console.log('lastName >>> ', enteredLastName)
-        console.log('email >>> ', enteredEmail)
-        console.log('address >>> ', enteredDeliveryAddress)
-        console.log('message >>> ', enteredMessage)
-        console.log('selected offer >>> ', selectedOffer)
-        console.log('selected delivery type >>> ', selectedDeliveryType)
-
-        try {
-            setIsLoading(true);
-            const response: Response = await fetch('https://formsubmit.co/ajax/antoanparashkevov@gmail.com', {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify({
-                    firstName: enteredFirstName,
-                    lastName: enteredLastName,
-                    email: enteredEmail,
-                    address: enteredDeliveryAddress,
-                    addressType: selectedDeliveryType === 'office' ? 'до офис' : 'до адрес',
-                    message: enteredMessage,
-                    selectedOffer: selectedOffer === 'gift' ? 'с подаръчна кутия' : 'без подаръчна кутия'
-                })
-            })
-
-            if( response && !response.ok ) {
-                throw new Error("Възникна грешка при изпращането на формата! Опитайте отново!")
+        await fetchData(
+            ['https://formsubmit.co/ajax/antoanparashkevov@gmail.com', 'https://formsubmit.co/ajax/tonkata1505@gmail.com'],
+            10000,
+            'POST',
+            {
+                firstName: enteredFirstName,
+                lastName: enteredLastName,
+                email: enteredEmail,
+                address: enteredDeliveryAddress,
+                addressType: selectedDeliveryType === 'office' ? 'до офис' : 'до адрес',
+                message: enteredMessage,
+                selectedOffer: selectedOffer === 'gift' ? 'с подаръчна кутия' : 'без подаръчна кутия'
             }
-
-            const data: { success: "true" | "false", message: string } = await response.json();
-
-            if( data!.success === 'false' ) {
-                throw new Error("Възникна грешка при изпращането на формата! Опитайте отново!");
-            }
-
-            setIsLoading(false);
-            setResolved(true);
-
-            // firstNameReset();
-            // lastNameReset();
-            // emailReset();
-            // deliveryAddressReset();
-
-        } catch (error) {
-            setIsLoading(false);
-            setResolved(true);
-            if (error instanceof Error) {
-                setHasError(error.message || "Възникна грешка при изпращането на формата! Опитайте отново!");
-            }
-        }
+        )
     }
 
     return (
         <Fragment>
             { resolved &&
                 <Notification
-                    status={hasError ? 'error' : 'success'}
+                    status={error ? 'error' : 'success'}
                     timeout={4000}
                 >
-                    { hasError ??
+                    { error ? error.message :
                         'Успешно приехме Вашата поръчка! Благодарим Ви!'
                     }
                 </Notification>
