@@ -11,7 +11,7 @@ const HeroSection: React.FC = () => {
 			<LinearGradient className="top-8 right-0" />
 			<div className="flex flex-col items-start lg:flex-shrink-0 max-w-[36rem] w-full mb-8">
 				<h1 className="text-xl lg:text-2xl mb-16 animate-showContent">
-					<span className="text-purple-500">69+</span>&nbsp;вълнуващи места за
+					<span className="text-purple-500">69+</span>&nbsp;Вълнуващи места за
 					любов
 				</h1>
 
@@ -31,7 +31,7 @@ const HeroSection: React.FC = () => {
 					<strong className="text-base lg:text-[30px] text-red-800">
 						34.99лв&nbsp;
 					</strong>
-					<span className='text-sm lg:text-base'>с подаръчна кутия + безплатна доставка до офис</span>
+					<span className='text-[1rem] lg:text-base'>с подаръчна кутия + безплатна доставка до офис</span>
 				</div>
 				<div className="flex items-end h-[55px] w-full animate-showContent-bigDelay mb-3">
 					<p className="relative flex items-baseline">
