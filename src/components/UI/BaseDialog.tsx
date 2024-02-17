@@ -1,3 +1,5 @@
+'use client';
+
 import React, { Fragment, ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
